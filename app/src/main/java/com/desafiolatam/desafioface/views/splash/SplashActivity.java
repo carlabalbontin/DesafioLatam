@@ -8,6 +8,7 @@ import android.os.Handler;
 import android.support.v4.content.LocalBroadcastManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 
 import com.desafiolatam.desafioface.R;
@@ -43,7 +44,7 @@ public class SplashActivity extends AppCompatActivity implements LoginCallback {
             @Override
             public void onReceive(Context context, Intent intent) {
                 String action = intent.getAction();
-
+                Log.d("SPLASH ACTION", action);
                 // Al usar el método equals, el primer parámetro debe existir, por eso ponemos la contstante
                 // Si el primer parámetro es null, se cae la aplicación
                 if(RecentUsersService.USERS_FINISHED.equals(action)){
@@ -69,7 +70,7 @@ public class SplashActivity extends AppCompatActivity implements LoginCallback {
 
     @Override
     public void signed() {
-
+        RecentUsersService.startActionRecentUsers(this);
     }
 
     @Override
